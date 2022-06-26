@@ -5,7 +5,7 @@ function Nav() {
     {
       name: "Portfolio",
       description:
-        "photo of my group projects that I did with my other classmates"
+        "photos of applications I have created"
     },
     {
       name: "Resume",
