@@ -1,27 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function Nav() {
-  const categories = [
-    {
-      name: "Portfolio",
-      description:
-        "photos of applications I have created"
-    },
-    {
-      name: "Resume",
-      description: "the resume used describing all my skills"
-    }
-  ]
+function Nav(props) {
+  const {
+    categories = [],
+    setCurrentCategory,
+    currentCategory,
+  } = props;
 
-  function categorySelected(name) {
-    console.log(`${name} clicked`)
-  }
+  useEffect(() => {
+    document.title = currentCategory.name;
+  }, [currentCategory]);
 
   return (
-    <header>
+    <header className="flex-row px-1">
       <h2>
-        <a href="/">
-        <span role="img" aria-label=""></span>John Pena
+        <a data-testid="link" href="/">
+          John Pena
         </a>
       </h2>
       <nav>
@@ -35,11 +29,14 @@ function Nav() {
             <span>Contact</span>
           </li>
           {categories.map((category) => (
-            <li
-              className="mx-1"
-              key={category.name}
-            >
-              <span onClick={categorySelected} >
+            <li className={`mx-1 ${
+                currentCategory.name === category.name && 'nanActive'
+                }`} key={category.name}>
+              <span
+                onClick={() => {
+                  setCurrentCategory(category)
+                }}
+              >
                 {category.name}
               </span>
             </li>
