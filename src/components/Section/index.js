@@ -1,24 +1,14 @@
 import React from 'react';
-import photo from '../../assets/small/projects/InsertDisc.png'
+import PortfolioPhoto from '../PortfolioPhoto';
 
-function Section (props) {
-  const currentCategory = {
-    name: "Portfolio",
-    description: 
-      "photos of applications I have created"
-  };
+function Section ({ currentCategory }) {
+  const { name, description } = currentCategory;
 
   return(
     <section>
-      <h1>{currentCategory.name}</h1>
-      <p>{currentCategory.name}</p>
-      <div className="flex-row">
-        <img
-          src={photo}
-          alt="InsertDisc"
-          className="img-thumbnail mx-1"
-        />
-      </div>
+      <h1 data-testid="h1tag">{name}</h1>
+      <p>{description}</p>
+      <PortfolioPhoto category={currentCategory.name} />
     </section>
   );
 }
