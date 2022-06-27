@@ -5,6 +5,10 @@ function ContactForm () {
 
   const { name, email, message } = formState;
 
+  function handleChange(event) {
+    setFormState({...formState, [event.target.name]: event.target.value})
+  };
+
   return (
     <section>
       <h1>Contact Me</h1>
@@ -15,11 +19,11 @@ function ContactForm () {
         </div>
         <div>
           <label htmlFor="email">Email address:</label>
-          <input type="email" defaultValue={email} name="email" />
+          <input type="email" defaultValue={email} name="email" onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="message">Message:</label>
-          <textarea name="message" defaultValue={message} rows="5"  />
+          <textarea name="message" defaultValue={message} onChange={handleChange} rows="5" />
         </div>
         <button type="submit">Submit</button>
       </form>
